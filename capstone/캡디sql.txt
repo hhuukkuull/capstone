@@ -1,0 +1,123 @@
+-- MySQL Workbench Forward Engineering
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema capstone
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema capstone
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `capstone` ;
+USE `capstone` ;
+
+-- -----------------------------------------------------
+-- Table `capstone`.`barcode`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `capstone`.`barcode` (
+  `ReportNumber` VARCHAR(45) NOT NULL,
+  `ItemName` VARCHAR(45) NULL,
+  `DistributionBarcode` VARCHAR(45) NULL,
+  `FoodType` VARCHAR(45) NULL,
+  `businessName` VARCHAR(45) NULL,
+  `businessType` VARCHAR(45) NULL,
+  PRIMARY KEY (`ReportNumber`))
+ENGINE = InnoDB;
+
+drop table food_nutri;
+-- -----------------------------------------------------
+-- Table `capstone`.`food_nutri`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `capstone`.`food_nutri` (
+  `Food name` LONGTEXT NULL,
+  `Food Code` VARCHAR(45) NULL,
+  `Food Type` varchar(45) NULL,
+  `Manufacturer name` VARCHAR(45) NULL,
+  `Saturated fatty acids (g) (per serving)` DOUBLE NULL,
+  `Trans fat (g) (per serving)` DOUBLE NULL,
+  `Fat (g) (per serving)` DOUBLE NULL,
+  `Sodium (mg) (per serving)` DOUBLE NULL,
+  `Cholesterol (mg) (per serving)` DOUBLE NULL,
+  `Calories (kcal) (per serving)` DOUBLE NULL,
+  `Carbohydrate (g) (per serving)` DOUBLE NULL,
+  `Protein (g) (per serving)` DOUBLE NULL,
+  `Total capacity` DOUBLE NULL,
+  `Total internal capacity unit` DOUBLE NULL,
+  `Food num` INT NOT NULL auto_increment,
+  PRIMARY KEY (`Food num`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `capstone`.`food_ingredients`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `capstone`.`food_ingredients` (
+  `Report number` VARCHAR(45) NOT NULL,
+  `License number` VARCHAR(45) NOT NULL,
+  `item name` LONGTEXT NULL,
+  `business_name` VARCHAR(45) NULL,
+  `food_type` VARCHAR(45) NULL,
+  `food_ingre` LONGTEXT NULL,
+  PRIMARY KEY (`Report number`))
+ENGINE = InnoDB;
+drop table food_ingredients;
+
+-- -----------------------------------------------------
+-- Table `capstone`.`Drug`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `capstone`.`Drug` (
+  `DrugCode` VARCHAR(45) NOT NULL,
+  `DrugName` LONGTEXT NULL,
+  `drug_producer` LONGTEXT NULL,
+  `drug_comp` LONGTEXT NULL,
+  `Drug_function` LONGTEXT NULL,
+  `Drug_howtouse` LONGTEXT NULL,
+  `Drug_mustknow` LONGTEXT NULL,
+  `Drug_caution` LONGTEXT NULL,
+  `Drug_caution_food` LONGTEXT NULL,
+  `Drug_sideeffe` LONGTEXT NULL,
+  PRIMARY KEY (`DrugCode`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `capstone`.`Drug2`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `capstone`.`Drug2` (
+  `num` INT NOT NULL auto_increment,
+  `food` VARCHAR(45) NULL,
+  `drugcomp_kor` VARCHAR(45) NULL,
+  `drugcomp_eng` VARCHAR(45) NULL,
+  `drug_examp` VARCHAR(50) NULL,
+  `drug_type`VARCHAR(45) NULL,
+  PRIMARY KEY (`num`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `capstone`.`DrugInfo` (
+  `DrugCode` VARCHAR(45) not NULL,
+  `DrugName` LONGTEXT NULL,
+  `drug_producer` LONGTEXT NULL,
+  `DrugID` LONGTEXT NULL,
+  `DrugType` LONGTEXT NULL,
+  PRIMARY KEY (`DrugCode`))
+ENGINE = InnoDB;
+
+select *from barcode;
+/*drop table barcode;*/
+select * from food_ingredients;
+
+select * from food_nutri;
+select * from barcode;
+select * from drug where drugname='활명수';
+select * from druginfo;
+select * from drug2;
+/*drop table barcode;*/
+/*drop table food_ingredients;*/
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
